@@ -1,12 +1,18 @@
+
 import mongoose from 'mongoose'
 
-if (!process.env.MONGODB_URI) {
-  throw new Error('Please add your MongoDB URI to .env.local')
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/qmc-cms'
+
+if (!MONGODB_URI) {
+  throw new Error('Please define the MONGODB_URI environment variable inside .env.local')
 }
 
-const MONGODB_URI = process.env.MONGODB_URI
+interface Cached {
+  conn: typeof mongoose | null
+  promise: Promise<typeof mongoose> | null
+}
 
-let cached = (global as any).mongoose
+let cached: Cached = (global as any).mongoose
 
 if (!cached) {
   cached = (global as any).mongoose = { conn: null, promise: null }
@@ -38,3 +44,6 @@ async function dbConnect() {
 }
 
 export default dbConnect
+
+// Alternative export for consistency
+export const connectToDatabase = dbConnect

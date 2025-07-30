@@ -24,7 +24,11 @@ const User = mongoose.model('User', UserSchema);
 
 async function seedAdmin() {
   try {
-    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/qmc-cms');
+    // Use MongoDB Atlas connection string
+    const mongoUri = process.env.MONGODB_URI || 'mongodb+srv://admin:admin123@cluster0.mongodb.net/qmc-cms?retryWrites=true&w=majority';
+    
+    await mongoose.connect(mongoUri);
+    console.log('Connected to MongoDB Atlas');
     
     const adminExists = await User.findOne({ email: 'admin@qmc.edu.ng' });
     
@@ -45,6 +49,7 @@ async function seedAdmin() {
     }
     
     await mongoose.disconnect();
+    console.log('Disconnected from MongoDB');
   } catch (error) {
     console.error('Error seeding admin:', error);
   }
