@@ -3,7 +3,7 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { Mail, Phone, MapPin, Facebook, Twitter, LinkedIn, Instagram, ExternalLink } from 'lucide-react'
+import { Mail, Phone, MapPin, Facebook, Twitter, Instagram, ExternalLink } from 'lucide-react'
 
 export default function Footer() {
   const quickLinks = [
@@ -24,7 +24,6 @@ export default function Footer() {
   const socialLinks = [
     { name: 'Facebook', href: '#', icon: Facebook },
     { name: 'Twitter', href: '#', icon: Twitter },
-    { name: 'LinkedIn', href: '#', icon: LinkedIn },
     { name: 'Instagram', href: '#', icon: Instagram }
   ]
 
