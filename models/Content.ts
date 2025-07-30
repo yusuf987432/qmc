@@ -1,29 +1,44 @@
+
 import mongoose from 'mongoose'
 
 const ContentSchema = new mongoose.Schema({
   section: {
     type: String,
     required: true,
-    enum: ['about', 'study', 'browse', 'research', 'alumni', 'contact', 'facilities']
+    unique: true,
+    enum: [
+      'about-us',
+      'study-with-us', 
+      'research',
+      'alumni',
+      'contact',
+      'facilities',
+      'browse-by',
+      'hero-section',
+      'general-settings'
+    ]
   },
-  key: {
-    type: String,
+  data: {
+    type: mongoose.Schema.Types.Mixed,
     required: true,
+    default: {}
   },
-  title: String,
-  content: String,
-  images: [String],
-  metadata: mongoose.Schema.Types.Mixed,
   createdAt: {
     type: Date,
-    default: Date.now,
+    default: Date.now
   },
   updatedAt: {
     type: Date,
-    default: Date.now,
-  },
+    default: Date.now
+  }
+}, {
+  timestamps: true
 })
 
-ContentSchema.index({ section: 1, key: 1 }, { unique: true })
+// Pre-save middleware to update the updatedAt field
+ContentSchema.pre('save', function(next) {
+  this.updatedAt = new Date()
+  next()
+})
 
 export default mongoose.models.Content || mongoose.model('Content', ContentSchema)
