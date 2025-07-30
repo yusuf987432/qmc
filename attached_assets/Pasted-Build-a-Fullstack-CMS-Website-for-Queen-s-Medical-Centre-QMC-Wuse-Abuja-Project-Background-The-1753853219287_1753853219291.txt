@@ -1,0 +1,216 @@
+Build a Fullstack CMS Website for Queen’s Medical Centre (QMC) Wuse, Abuja
+🏛 Project Background
+The Queen’s Medical Centre (QMC) is an independent training institution in the healthcare, medical, and professional development space. Located in Wuse, Abuja, this assistant branch collaborates with the University of Nottingham (UK) to provide certification programs, distance learning, and continuing education.
+
+This project aims to build a fullstack web platform to support both the public presentation of QMC’s programs and an internal content management system for administrative users.
+
+🚀 Objective
+Develop a modern, scalable, and responsive fullstack application that:
+
+Presents QMC’s content and services to the public
+
+Enables internal admins to manage all website content via a secure, intuitive admin dashboard
+
+Supports future scalability for additional features like course applications, event registration, or alumni portals
+
+🧱 Technology Stack
+Frontend Framework: Next.js (App Router)
+
+Styling: Tailwind CSS
+
+Programming Language: TypeScript
+
+Motion/Animation: Framer Motion
+
+Database: MongoDB with Mongoose
+
+Authentication: NextAuth.js (with credentials-based login for Admin only)
+
+File Uploads: Cloudinary or Amazon S3 (for admin image/media management)
+
+Rich Text Editor: Tiptap or React Quill
+
+Deployment Targets: Vercel (Frontend) + MongoDB Atlas (Backend)
+
+🔐 Admin Dashboard (Private Area)
+The platform must include a secure Admin Panel where authenticated admins can log in and manage all dynamic content. This includes:
+
+A login page with secure authentication
+
+A dashboard overview
+
+Content management for each public-facing section
+
+Blog post management with rich text support and image upload
+
+Job listing and event management tools
+
+Media upload functionality for adding banners, images, etc.
+
+All changes made via the admin panel must reflect immediately on the public-facing website.
+
+🧩 Editable Content Sections (Full CRUD Functionality)
+Each of the following categories must be fully editable (create, read, update, delete) from the Admin Panel:
+
+🔹 ABOUT US
+History
+
+Calendar and key dates
+
+Academic structure
+
+Global impact
+
+Facts and figures
+
+🔹 STUDY WITH US
+Undergraduate offerings
+
+Postgraduate programs
+
+International students info
+
+Degree Apprenticeships
+
+Fees and funding information
+
+🔹 BROWSE BY
+Schools or departments
+
+Research centers and institutes
+
+Professional service departments
+
+🔹 JOBS
+List of available jobs
+
+Application instructions or direct apply links
+
+Job posting metadata (title, deadline, description, etc.)
+
+🔹 RESEARCH
+Research impact
+
+Innovation and partnerships
+
+Sustainable Development Goals (SDGs) content
+
+Highlights from Times Higher Education Impact Rankings (2025 and beyond)
+
+🔹 ALUMNI
+Alumni events and updates
+
+Professional development opportunities
+
+Access to Learn Library (webinars, seminars, resources)
+
+Careers and employability support
+
+🔹 CONTACT / GET IN TOUCH
+Contact details for departments
+
+Study enquiries
+
+Visit and address information
+
+Optional contact form
+
+🔹 FACILITIES & RESOURCES
+Library services
+
+Conference centers
+
+News and blog updates
+
+Upcoming events
+
+Media inquiries
+
+📚 Blog Management
+The platform should include a full blog system with:
+
+Post creation, editing, and deletion from admin dashboard
+
+Featured image upload
+
+Rich content editing via WYSIWYG editor
+
+Optional categorization/tags
+
+Draft and publish states
+
+Public display on blog/news page
+
+💼 Job Board
+Job listing system includes:
+
+Admin ability to create/edit/delete job posts
+
+Set deadlines, descriptions, application instructions
+
+Display jobs publicly with filtering by status (open/closed)
+
+Optional direct application or external link support
+
+📅 Events Module
+Event management should allow admins to:
+
+Create and manage events (title, date, time, description)
+
+Upload event banner or poster images
+
+Display events in a calendar or list format publicly
+
+✨ Frontend Functionality (Public Site)
+Responsive, modern design using Tailwind CSS
+
+Smooth transitions and animations using Framer Motion
+
+Dynamic rendering of all content based on data from MongoDB
+
+Search engine optimization (SEO) best practices
+
+Lazy loading and performance optimizations
+
+Mobile-first accessibility and UI considerations
+
+Header, Footer, and Navigation that reflect content hierarchy
+
+🔧 Developer Considerations
+Modular codebase with reusable components and layout wrappers
+
+Environment-based configurations (.env) for API endpoints and secrets
+
+Server-side data fetching where appropriate for SEO
+
+Client-side interactions for admin dashboard (e.g. real-time updates, autosave, rich media preview)
+
+Middleware or route guards for admin routes
+
+Error boundaries and user-friendly feedback throughout the app
+
+📦 Deliverables
+Fully functional frontend website with public pages rendered from CMS content
+
+Protected admin dashboard with rich CRUD interface
+
+Connected MongoDB database with all content schema
+
+Secure admin authentication and session handling
+
+File/image upload feature via chosen service (Cloudinary/S3)
+
+Deployment-ready build hosted on Vercel with connected cloud DB
+
+Sample content for each section to demonstrate functionality
+
+Documentation on managing content and future maintenance
+
+🎯 Success Criteria
+Admin can update any public-facing content without touching code
+
+All pages reflect latest content from the database
+
+Website is responsive, accessible, and engaging
+
+Platform is easily extendable for future needs (e.g. student application forms)
