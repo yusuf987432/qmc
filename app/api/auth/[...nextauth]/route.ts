@@ -12,28 +12,43 @@ const handler = NextAuth({
         password: { label: 'Password', type: 'password' }
       },
       async authorize(credentials) {
+        console.log('Authorize called with:', credentials?.email)
+        
         if (!credentials?.email || !credentials?.password) {
+          console.log('Missing credentials')
           return null
         }
 
-        await dbConnect()
-        const user = await User.findOne({ email: credentials.email })
+        try {
+          await dbConnect()
+          console.log('Database connected')
+          
+          const user = await User.findOne({ email: credentials.email.toLowerCase() })
+          console.log('User found:', !!user)
 
-        if (!user) {
+          if (!user) {
+            console.log('User not found')
+            return null
+          }
+
+          const isPasswordValid = await user.comparePassword(credentials.password)
+          console.log('Password valid:', isPasswordValid)
+
+          if (!isPasswordValid) {
+            console.log('Invalid password')
+            return null
+          }
+
+          console.log('Authentication successful')
+          return {
+            id: user._id.toString(),
+            email: user.email,
+            name: user.name,
+            role: user.role,
+          }
+        } catch (error) {
+          console.error('Auth error:', error)
           return null
-        }
-
-        const isPasswordValid = await user.comparePassword(credentials.password)
-
-        if (!isPasswordValid) {
-          return null
-        }
-
-        return {
-          id: user._id,
-          email: user.email,
-          name: user.name,
-          role: user.role,
         }
       }
     })
@@ -64,6 +79,7 @@ const handler = NextAuth({
   pages: {
     signIn: '/admin/login',
   },
+  debug: process.env.NODE_ENV === 'development',
 })
 
 export { handler as GET, handler as POST }
